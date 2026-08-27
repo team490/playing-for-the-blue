@@ -10,23 +10,28 @@ Domain and repo details are already baked in. One placeholder is left.
 | Domain | `playingfortheblue.nz` (CNAME file committed) |
 | GitHub account | `team490` |
 | Local repo | committed on `main`, no remote yet |
-| Outstanding | GHL form ID - see below |
+| GHL form | LD4dK2lxO7FFQZniYveC on links.genesiscrm.co.nz - wired in and tested |
 
-## The one remaining placeholder
+## The form
 
-`index.html` contains:
+Wired in and tested at 1440px and 375px. The iframe and `form_embed.js`
+inject on click only, so nothing third-party touches the page until someone
+presses "Keep me posted". The script resizes the iframe to the form's real
+height via postMessage, which is why the data attributes on the iframe
+matter - do not strip them.
 
-```
-https://links.biguglyresults.com/widget/form/REPLACE-GHL-FORM-ID
-```
+Cloudflare Turnstile inside the GHL iframe throws console errors on
+localhost. That is expected and clears once it runs on the real domain.
 
-Create the form in GoHighLevel, copy the form ID out of its embed code,
-and swap it in. Until then the modal opens to an empty white panel because
-the iframe 404s.
+### Two things to change inside the GHL builder
 
-The form loads on click only. Nothing from leadconnectorhq touches the page
-until someone presses "Keep me posted", so the holding page stays fast and
-does not phone home for visitors who never interact.
+1. **Phone is currently a required field.** Make it optional or remove it.
+   Mandatory phone numbers for a holding-page mailing list is more personal
+   data than is needed, it suppresses signups, and for an audience of police
+   staff it is the wrong default. Email alone is enough at this stage.
+2. **The submit button is default GHL blue** (`#2563EB`), which fights the
+   palette. Restyle it to amber `#F2A33C` with dark text `#2A1806` to match
+   the page CTA. Cross-origin iframe, so it cannot be done from our CSS.
 
 **Where the data lands.** The form sits in the Big Ugly Results GHL account,
 so enquiries from police staff land in the agency CRM. That is fine for a

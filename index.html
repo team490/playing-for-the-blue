@@ -263,10 +263,12 @@ button.btn{font-family:inherit;cursor:pointer}
 .modal-close:hover{background:rgba(16,24,40,.07)}
 .modal-close:active{transform:scale(.94)}
 .modal-close:focus-visible{outline:2px solid var(--beacon-deep);outline-offset:2px}
-.modal-body{flex:1 1 auto;min-height:22rem;padding:0 var(--s3) var(--s3)}
-.modal-body iframe{display:block;width:100%;height:100%;min-height:22rem;border:0;border-radius:10px}
+/* height is set inline by form_embed.js once the form reports its size,
+   so do not fight it with a CSS height here */
+.modal-body{flex:1 1 auto;overflow-y:auto;padding:0 var(--s3) var(--s3)}
+.modal-body iframe{display:block;width:100%;min-height:529px;border:0;border-radius:10px}
 .modal-loading{
-  height:22rem;display:grid;place-items:center;
+  height:529px;display:grid;place-items:center;
   font-size:.88rem;color:#54617A;
 }
 
@@ -381,8 +383,9 @@ footer{
 (function () {
   // GHL form loads only when the button is clicked - nothing third-party
   // touches the page until someone actually asks for the form.
-  var FORM_SRC   = 'https://links.biguglyresults.com/widget/form/REPLACE-GHL-FORM-ID';
-  var SCRIPT_SRC = 'https://links.biguglyresults.com/js/form_embed.js';
+  var FORM_ID    = 'LD4dK2lxO7FFQZniYveC';
+  var FORM_SRC   = 'https://links.genesiscrm.co.nz/widget/form/' + FORM_ID;
+  var SCRIPT_SRC = 'https://links.genesiscrm.co.nz/js/form_embed.js';
 
   var modal    = document.getElementById('form-modal');
   var slot     = document.getElementById('form-slot');
@@ -396,7 +399,19 @@ footer{
     var f = document.createElement('iframe');
     f.src = FORM_SRC;
     f.title = 'Keep me posted';
+    f.id = 'inline-' + FORM_ID;
     f.setAttribute('scrolling', 'no');
+    // form_embed.js reads these to post the real height back and resize us
+    f.setAttribute('data-layout', "{'id':'INLINE'}");
+    f.setAttribute('data-trigger-type', 'alwaysShow');
+    f.setAttribute('data-activation-type', 'alwaysActivated');
+    f.setAttribute('data-deactivation-type', 'neverDeactivate');
+    f.setAttribute('data-form-name', 'Playing for the Blue - keep me posted');
+    f.setAttribute('data-height', '529');
+    f.setAttribute('data-layout-iframe-id', 'inline-' + FORM_ID);
+    f.setAttribute('data-form-id', FORM_ID);
+    f.setAttribute('data-cookie-consent', 'true');
+    f.setAttribute('data-cookie-consent-provider', 'auto');
     f.addEventListener('load', function () {
       var l = slot.querySelector('.modal-loading');
       if (l) l.remove();
