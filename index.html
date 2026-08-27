@@ -1,0 +1,436 @@
+<!doctype html>
+<html lang="en-NZ">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Playing for the Blue — A concert for those who serve</title>
+<meta name="description" content="Playing for the Blue is a charitable concert for New Zealand's police, emergency services, and the families who stand behind them. Announcing soon.">
+<link rel="canonical" href="https://playingfortheblue.nz/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Playing for the Blue">
+<meta property="og:title" content="Playing for the Blue">
+<meta property="og:description" content="A charitable concert for New Zealand's police, emergency services, and the families who stand behind them. Announcing soon.">
+<meta property="og:url" content="https://playingfortheblue.nz/">
+<meta property="og:locale" content="en_NZ">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#060A16">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%23060A16'/><rect x='6' y='8' width='8' height='8' fill='%235B9CFF'/><rect x='14' y='16' width='8' height='8' fill='%235B9CFF'/><rect x='14' y='8' width='8' height='8' fill='%23F2A33C'/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700;9..144,900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ── Tokens ─────────────────────────────────────────────────────────── */
+:root{
+  --ink:#060A16;
+  --navy-900:#0A1024;
+  --navy-800:#131D42;
+  --beacon:#5B9CFF;
+  --beacon-deep:#16307A;
+  --amber:#F2A33C;
+  --amber-hot:#FFC96B;
+  --paper:#EEF2FB;
+  --muted:#94A6CC;
+  --line:rgba(91,156,255,.16);
+
+  /* spacing scale */
+  --s1:.5rem; --s2:.75rem; --s3:1rem; --s4:1.5rem;
+  --s5:2rem; --s6:3rem; --s7:4.5rem; --s8:7rem;
+
+  --ease:cubic-bezier(.22,1,.36,1);
+  --shadow-float:
+     0 1px 2px rgba(6,10,22,.6),
+     0 8px 20px -6px rgba(22,48,122,.55),
+     0 24px 60px -20px rgba(91,156,255,.35);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;
+  min-height:100svh;
+  background:var(--ink);
+  color:var(--paper);
+  font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;
+  font-size:clamp(1rem,.95rem + .25vw,1.0625rem);
+  line-height:1.7;
+  -webkit-font-smoothing:antialiased;
+  display:flex;
+  flex-direction:column;
+}
+
+/* ── Stage lighting: layered radials + grain ────────────────────────── */
+.stage{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.stage::before{
+  content:"";position:absolute;inset:-20%;
+  background:
+    radial-gradient(58% 44% at 50% 108%, rgba(242,163,60,.30) 0%, rgba(242,163,60,0) 62%),
+    radial-gradient(46% 38% at 12% 4%,  rgba(91,156,255,.26) 0%, rgba(91,156,255,0) 66%),
+    radial-gradient(52% 42% at 88% 12%, rgba(22,48,122,.62) 0%, rgba(22,48,122,0) 70%),
+    radial-gradient(90% 70% at 50% 46%, rgba(19,29,66,.85) 0%, var(--ink) 78%);
+  animation:drift 26s var(--ease) infinite alternate;
+}
+.stage::after{
+  content:"";position:absolute;inset:0;opacity:.16;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+@keyframes drift{
+  from{transform:translate3d(0,0,0) scale(1)}
+  to{transform:translate3d(0,-2.5%,0) scale(1.06)}
+}
+
+/* ── Sillitoe band (police chequer motif) ───────────────────────────── */
+.chequer{
+  height:18px;flex:none;position:relative;z-index:2;
+  background-color:var(--navy-900);
+  background-image:
+    linear-gradient(45deg,var(--beacon) 25%,transparent 25%,transparent 75%,var(--beacon) 75%),
+    linear-gradient(45deg,var(--beacon) 25%,transparent 25%,transparent 75%,var(--beacon) 75%);
+  background-size:18px 18px;
+  background-position:0 0,9px 9px;
+  opacity:.72;
+}
+
+/* ── Shell ──────────────────────────────────────────────────────────── */
+.shell{
+  position:relative;z-index:1;
+  flex:1 0 auto;
+  width:min(100% - 2.5rem, 68rem);
+  margin-inline:auto;
+  display:flex;flex-direction:column;
+}
+header.top{
+  display:flex;align-items:center;justify-content:space-between;gap:var(--s3);
+  padding-block:var(--s4);
+  flex-wrap:wrap;
+}
+.mark{
+  display:flex;align-items:center;gap:.65rem;
+  font-family:Fraunces,Georgia,serif;
+  font-weight:900;font-size:.9rem;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--paper);
+}
+.mark svg{flex:none}
+.top-note{
+  margin:0;
+  font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--muted);
+}
+
+/* ── Hero ───────────────────────────────────────────────────────────── */
+main{
+  flex:1 0 auto;
+  display:flex;flex-direction:column;justify-content:center;
+  padding-block:var(--s7) var(--s6);
+  max-width:44rem;
+}
+.badge{
+  display:inline-flex;align-items:center;gap:.6rem;align-self:flex-start;
+  margin:0;
+  padding:.4rem .95rem .4rem .7rem;
+  border:1px solid var(--line);
+  border-radius:100px;
+  background:rgba(19,29,66,.55);
+  -webkit-backdrop-filter:blur(8px);
+  backdrop-filter:blur(8px);
+  font-size:.75rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--beacon);
+}
+.dot{
+  width:7px;height:7px;border-radius:50%;background:var(--amber);flex:none;
+  box-shadow:0 0 0 4px rgba(242,163,60,.18);
+  animation:pulse 2.6s var(--ease) infinite;
+}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+
+h1{
+  font-family:Fraunces,Georgia,serif;
+  font-weight:900;
+  font-size:clamp(2.5rem,1.5rem + 4.6vw,4.5rem);
+  line-height:1.02;
+  letter-spacing:-.03em;
+  margin:var(--s4) 0 0;
+  text-wrap:balance;
+}
+h1 .glow{
+  color:var(--amber-hot);
+  display:inline-block;
+  text-shadow:0 0 42px rgba(242,163,60,.42);
+}
+.lede{
+  margin:var(--s4) 0 0;
+  font-size:clamp(1.0625rem,1rem + .5vw,1.3rem);
+  color:#C9D6EE;
+  max-width:34rem;
+  text-wrap:pretty;
+}
+.sub{margin:var(--s2) 0 0;color:var(--muted);max-width:34rem;font-size:.98rem}
+
+/* ── Facts ──────────────────────────────────────────────────────────── */
+.facts{
+  display:grid;gap:1px;
+  grid-template-columns:repeat(auto-fit,minmax(10rem,1fr));
+  margin:var(--s6) 0 0;
+  background:var(--line);
+  border:1px solid var(--line);
+  border-radius:14px;
+  overflow:hidden;
+}
+.fact{
+  background:linear-gradient(180deg,rgba(19,29,66,.72),rgba(10,16,36,.72));
+  padding:var(--s4) var(--s3);
+}
+.fact dt{
+  font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--beacon);
+  margin:0 0 .35rem;
+}
+.fact dd{
+  margin:0;font-family:Fraunces,Georgia,serif;font-weight:700;
+  font-size:1.15rem;line-height:1.3;letter-spacing:-.01em;color:var(--paper);
+}
+
+/* ── Actions ────────────────────────────────────────────────────────── */
+.actions{display:flex;flex-wrap:wrap;gap:var(--s2) var(--s3);margin:var(--s5) 0 0;align-items:center}
+.btn{
+  display:inline-flex;align-items:center;gap:.55rem;
+  padding:.85rem 1.4rem;border-radius:100px;
+  font-weight:600;font-size:.95rem;letter-spacing:.01em;
+  text-decoration:none;border:1px solid transparent;
+  transition:transform .28s var(--ease),box-shadow .28s var(--ease),border-color .28s var(--ease);
+}
+.btn:active{transform:translateY(1px) scale(.985)}
+.btn:focus-visible{outline:2px solid var(--amber-hot);outline-offset:3px}
+.btn-primary{
+  background:linear-gradient(180deg,var(--amber-hot),var(--amber));
+  color:#2A1806;
+  box-shadow:var(--shadow-float);
+}
+.btn-primary:hover{transform:translateY(-2px)}
+.btn-ghost{
+  color:var(--paper);
+  border-color:var(--line);
+  background:rgba(19,29,66,.5);
+}
+.btn-ghost:hover{transform:translateY(-2px);border-color:rgba(91,156,255,.4);box-shadow:0 10px 30px -14px rgba(91,156,255,.5)}
+.btn svg{flex:none;transition:transform .28s var(--ease)}
+.btn:hover svg{transform:translateX(3px)}
+
+.actions-note{margin:var(--s3) 0 0;font-size:.85rem;color:var(--muted)}
+button.btn{font-family:inherit;cursor:pointer}
+
+/* ── Form modal ─────────────────────────────────────────────────────── */
+.modal{
+  position:fixed;inset:0;z-index:50;
+  display:none;align-items:center;justify-content:center;
+  padding:var(--s3);
+}
+.modal[open],.modal.is-open{display:flex}
+.modal-scrim{
+  position:absolute;inset:0;
+  background:rgba(3,6,14,.78);
+  -webkit-backdrop-filter:blur(6px);
+  backdrop-filter:blur(6px);
+  animation:fade .3s var(--ease);
+}
+.modal-panel{
+  position:relative;
+  width:min(100%,30rem);
+  max-height:min(90svh,44rem);
+  display:flex;flex-direction:column;
+  background:var(--paper);
+  color:#101828;
+  border-radius:18px;
+  overflow:hidden;
+  box-shadow:var(--shadow-float);
+  animation:rise .38s var(--ease);
+}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+@keyframes rise{from{opacity:0;transform:translateY(14px) scale(.98)}to{opacity:1;transform:none}}
+.modal-head{
+  display:flex;align-items:flex-start;justify-content:space-between;gap:var(--s3);
+  padding:var(--s4) var(--s4) var(--s2);
+}
+.modal-head h2{
+  margin:0;font-family:Fraunces,Georgia,serif;font-weight:700;
+  font-size:1.35rem;letter-spacing:-.02em;line-height:1.2;color:#0B1220;
+}
+.modal-head p{margin:.35rem 0 0;font-size:.88rem;line-height:1.55;color:#54617A}
+.modal-close{
+  flex:none;width:34px;height:34px;border-radius:50%;
+  border:1px solid rgba(16,24,40,.14);background:transparent;cursor:pointer;
+  color:#54617A;font-size:1.15rem;line-height:1;
+  display:grid;place-items:center;
+  transition:background-color .25s var(--ease),transform .25s var(--ease);
+}
+.modal-close:hover{background:rgba(16,24,40,.07)}
+.modal-close:active{transform:scale(.94)}
+.modal-close:focus-visible{outline:2px solid var(--beacon-deep);outline-offset:2px}
+.modal-body{flex:1 1 auto;min-height:22rem;padding:0 var(--s3) var(--s3)}
+.modal-body iframe{display:block;width:100%;height:100%;min-height:22rem;border:0;border-radius:10px}
+.modal-loading{
+  height:22rem;display:grid;place-items:center;
+  font-size:.88rem;color:#54617A;
+}
+
+/* ── Footer ─────────────────────────────────────────────────────────── */
+footer{
+  position:relative;z-index:1;
+  border-top:1px solid var(--line);
+  margin-top:var(--s6);
+}
+.foot-inner{
+  width:min(100% - 2.5rem,68rem);margin-inline:auto;
+  padding-block:var(--s4);
+  display:flex;flex-wrap:wrap;gap:var(--s2) var(--s5);
+  align-items:center;justify-content:space-between;
+  font-size:.82rem;color:var(--muted);
+}
+.foot-inner p{margin:0}
+.foot-inner a{color:var(--beacon);text-decoration:none;border-bottom:1px solid transparent;transition:border-color .25s var(--ease)}
+.foot-inner a:hover{border-bottom-color:var(--beacon)}
+.foot-inner a:focus-visible{outline:2px solid var(--amber-hot);outline-offset:2px}
+.disclaimer{max-width:36rem;line-height:1.6}
+
+@media (max-width:640px){
+  main{padding-block:var(--s6) var(--s5)}
+  .facts{margin-top:var(--s5);grid-template-columns:1fr}
+  .actions .btn{width:100%;justify-content:center}
+}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition-duration:.01ms!important}
+}
+</style>
+</head>
+<body>
+<div class="stage" aria-hidden="true"></div>
+<div class="chequer" aria-hidden="true"></div>
+
+<div class="shell">
+  <header class="top">
+    <div class="mark">
+      <svg width="22" height="22" viewBox="0 0 32 32" aria-hidden="true">
+        <rect x="4" y="6" width="8" height="8" fill="#5B9CFF"/>
+        <rect x="12" y="14" width="8" height="8" fill="#5B9CFF"/>
+        <rect x="12" y="6" width="8" height="8" fill="#F2A33C"/>
+        <rect x="20" y="14" width="8" height="8" fill="#16307A"/>
+      </svg>
+      Playing for the Blue
+    </div>
+    <p class="top-note">Aotearoa New Zealand</p>
+  </header>
+
+  <main>
+    <p class="badge"><span class="dot" aria-hidden="true"></span> In development &middot; announcing soon</p>
+
+    <h1>One night.<br>One stage.<br><span class="glow">For those who serve.</span></h1>
+
+    <p class="lede">
+      Playing for the Blue is a charitable concert for New Zealand's police,
+      emergency services, and the families who carry the weight alongside them.
+    </p>
+    <p class="sub">
+      Artists donate the performance. A venue donates the room. Every seat goes to
+      the people who spend their working lives running toward the thing everyone
+      else runs from.
+    </p>
+
+    <dl class="facts">
+      <div class="fact"><dt>Format</dt><dd>Once a year, live</dd></div>
+      <div class="fact"><dt>Who it is for</dt><dd>Staff and wh&#257;nau</dd></div>
+      <div class="fact"><dt>Cost to attend</dt><dd>Free, always</dd></div>
+    </dl>
+
+    <div class="actions">
+      <button class="btn btn-primary" type="button" id="open-form">
+        Keep me posted
+        <svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8h11m0 0-4-4m4 4-4 4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+    </div>
+    <p class="actions-note">
+      Artists, venues and partners: same form, just tell us which.
+    </p>
+  </main>
+</div>
+
+<footer>
+  <div class="foot-inner">
+    <p class="disclaimer">
+      Playing for the Blue is an independent charitable initiative. It is not
+      operated by, or affiliated with, New Zealand Police.
+    </p>
+    <p>&copy; 2026 Playing for the Blue &middot; <a href="https://biguglyresults.com" rel="nofollow">Site by Big Ugly Results</a></p>
+  </div>
+</footer>
+
+<div class="modal" id="form-modal" role="dialog" aria-modal="true" aria-labelledby="form-modal-title" hidden>
+  <div class="modal-scrim" data-close></div>
+  <div class="modal-panel">
+    <div class="modal-head">
+      <div>
+        <h2 id="form-modal-title">Keep me posted</h2>
+        <p>We will only email you about this event. Nothing else, no lists, no sharing.</p>
+      </div>
+      <button class="modal-close" type="button" data-close aria-label="Close">&#10005;</button>
+    </div>
+    <div class="modal-body" id="form-slot">
+      <div class="modal-loading">Loading the form&hellip;</div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  // GHL form loads only when the button is clicked - nothing third-party
+  // touches the page until someone actually asks for the form.
+  var FORM_SRC   = 'https://links.biguglyresults.com/widget/form/REPLACE-GHL-FORM-ID';
+  var SCRIPT_SRC = 'https://links.biguglyresults.com/js/form_embed.js';
+
+  var modal    = document.getElementById('form-modal');
+  var slot     = document.getElementById('form-slot');
+  var openBtn  = document.getElementById('open-form');
+  var injected = false;
+  var lastFocus = null;
+
+  function inject() {
+    if (injected) return;
+    injected = true;
+    var f = document.createElement('iframe');
+    f.src = FORM_SRC;
+    f.title = 'Keep me posted';
+    f.setAttribute('scrolling', 'no');
+    f.addEventListener('load', function () {
+      var l = slot.querySelector('.modal-loading');
+      if (l) l.remove();
+    });
+    slot.appendChild(f);
+    var s = document.createElement('script');
+    s.src = SCRIPT_SRC;
+    document.body.appendChild(s);
+  }
+
+  function open() {
+    lastFocus = document.activeElement;
+    modal.hidden = false;
+    modal.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+    inject();
+    modal.querySelector('.modal-close').focus();
+  }
+
+  function close() {
+    modal.classList.remove('is-open');
+    modal.hidden = true;
+    document.body.style.overflow = '';
+    if (lastFocus) lastFocus.focus();
+  }
+
+  openBtn.addEventListener('click', open);
+  modal.addEventListener('click', function (e) {
+    if (e.target.hasAttribute('data-close')) close();
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && !modal.hidden) close();
+  });
+})();
+</script>
+</body>
+</html>
