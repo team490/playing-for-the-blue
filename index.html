@@ -3,25 +3,25 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Playing for the Blue — A concert for those who serve</title>
-<meta name="description" content="Playing for the Blue is a charitable concert for New Zealand's police, emergency services, and the families who stand behind them. Announcing soon.">
+<title>Playing for the Blue</title>
+<meta name="description" content="Playing for the Blue. Coming soon.">
 <link rel="canonical" href="https://playingfortheblue.nz/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Playing for the Blue">
 <meta property="og:title" content="Playing for the Blue">
-<meta property="og:description" content="A charitable concert for New Zealand's police, emergency services, and the families who stand behind them. Announcing soon.">
+<meta property="og:description" content="Coming soon.">
 <meta property="og:url" content="https://playingfortheblue.nz/">
 <meta property="og:locale" content="en_NZ">
 <meta property="og:image" content="https://playingfortheblue.nz/og-image.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:type" content="image/jpeg">
-<meta property="og:image:alt" content="Playing for the Blue - One night. One stage. For those who serve.">
+<meta property="og:image:alt" content="Playing for the Blue - coming soon">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Playing for the Blue">
-<meta name="twitter:description" content="A charitable concert for New Zealand's police, emergency services, and the families who stand behind them. Announcing soon.">
+<meta name="twitter:description" content="Coming soon.">
 <meta name="twitter:image" content="https://playingfortheblue.nz/og-image.jpg">
-<meta name="twitter:image:alt" content="Playing for the Blue - One night. One stage. For those who serve.">
+<meta name="twitter:image:alt" content="Playing for the Blue - coming soon">
 <meta name="theme-color" content="#060A16">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="/icon-512.png" sizes="512x512" type="image/png">
@@ -43,9 +43,8 @@
   --muted:#94A6CC;
   --line:rgba(91,156,255,.16);
 
-  /* spacing scale */
   --s1:.5rem; --s2:.75rem; --s3:1rem; --s4:1.5rem;
-  --s5:2rem; --s6:3rem; --s7:4.5rem; --s8:7rem;
+  --s5:2rem; --s6:3rem; --s7:4.5rem;
 
   --ease:cubic-bezier(.22,1,.36,1);
   --shadow-float:
@@ -68,7 +67,7 @@ body{
   flex-direction:column;
 }
 
-/* ── Stage lighting: layered radials + grain ────────────────────────── */
+/* ── Stage lighting ─────────────────────────────────────────────────── */
 .stage{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
 .stage::before{
   content:"";position:absolute;inset:-20%;
@@ -88,7 +87,7 @@ body{
   to{transform:translate3d(0,-2.5%,0) scale(1.06)}
 }
 
-/* ── Sillitoe band (police chequer motif) ───────────────────────────── */
+/* ── Sillitoe band ──────────────────────────────────────────────────── */
 .chequer{
   height:18px;flex:none;position:relative;z-index:2;
   background-color:var(--navy-900);
@@ -100,41 +99,20 @@ body{
   opacity:.72;
 }
 
-/* ── Shell ──────────────────────────────────────────────────────────── */
-.shell{
+/* ── Centred holding layout ─────────────────────────────────────────── */
+main{
   position:relative;z-index:1;
   flex:1 0 auto;
-  width:min(100% - 2.5rem, 68rem);
-  margin-inline:auto;
   display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  text-align:center;
+  width:min(100% - 2.5rem,44rem);
+  margin-inline:auto;
+  padding-block:var(--s7);
 }
-header.top{
-  display:flex;align-items:center;justify-content:space-between;gap:var(--s3);
-  padding-block:var(--s4);
-  flex-wrap:wrap;
-}
-.mark{
-  display:flex;align-items:center;gap:.65rem;
-  font-family:Fraunces,Georgia,serif;
-  font-weight:900;font-size:.9rem;letter-spacing:.16em;text-transform:uppercase;
-  color:var(--paper);
-}
-.mark svg{flex:none}
-.top-note{
-  margin:0;
-  font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;
-  color:var(--muted);
-}
-
-/* ── Hero ───────────────────────────────────────────────────────────── */
-main{
-  flex:1 0 auto;
-  display:flex;flex-direction:column;justify-content:center;
-  padding-block:var(--s7) var(--s6);
-  max-width:44rem;
-}
+.glyph{margin-bottom:var(--s5)}
 .badge{
-  display:inline-flex;align-items:center;gap:.6rem;align-self:flex-start;
+  display:inline-flex;align-items:center;gap:.6rem;
   margin:0;
   padding:.4rem .95rem .4rem .7rem;
   border:1px solid var(--line);
@@ -142,8 +120,8 @@ main{
   background:rgba(19,29,66,.55);
   -webkit-backdrop-filter:blur(8px);
   backdrop-filter:blur(8px);
-  font-size:.75rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;
-  color:var(--beacon);
+  font-size:.75rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--amber);
 }
 .dot{
   width:7px;height:7px;border-radius:50%;background:var(--amber);flex:none;
@@ -155,57 +133,34 @@ main{
 h1{
   font-family:Fraunces,Georgia,serif;
   font-weight:900;
-  font-size:clamp(2.5rem,1.5rem + 4.6vw,4.5rem);
-  line-height:1.02;
+  font-size:clamp(2.4rem,1.4rem + 4.4vw,4.25rem);
+  line-height:1.04;
   letter-spacing:-.03em;
   margin:var(--s4) 0 0;
   text-wrap:balance;
 }
-h1 .glow{
-  color:var(--amber-hot);
-  display:inline-block;
-  text-shadow:0 0 42px rgba(242,163,60,.42);
-}
-.lede{
+.tagline{
   margin:var(--s4) 0 0;
-  font-size:clamp(1.0625rem,1rem + .5vw,1.3rem);
-  color:#C9D6EE;
-  max-width:34rem;
-  text-wrap:pretty;
+  color:var(--muted);
+  font-size:1.02rem;
+  max-width:26rem;
+  text-wrap:balance;
 }
-.sub{margin:var(--s2) 0 0;color:var(--muted);max-width:34rem;font-size:.98rem}
-
-/* ── Facts ──────────────────────────────────────────────────────────── */
-.facts{
-  display:grid;gap:1px;
-  grid-template-columns:repeat(auto-fit,minmax(10rem,1fr));
-  margin:var(--s6) 0 0;
-  background:var(--line);
-  border:1px solid var(--line);
-  border-radius:14px;
-  overflow:hidden;
-}
-.fact{
-  background:linear-gradient(180deg,rgba(19,29,66,.72),rgba(10,16,36,.72));
-  padding:var(--s4) var(--s3);
-}
-.fact dt{
-  font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--beacon);
-  margin:0 0 .35rem;
-}
-.fact dd{
-  margin:0;font-family:Fraunces,Georgia,serif;font-weight:700;
-  font-size:1.15rem;line-height:1.3;letter-spacing:-.01em;color:var(--paper);
+.rule{
+  width:64px;height:2px;flex:none;
+  margin:var(--s5) 0 0;
+  background:linear-gradient(90deg,transparent,var(--amber),transparent);
+  opacity:.7;
 }
 
-/* ── Actions ────────────────────────────────────────────────────────── */
-.actions{display:flex;flex-wrap:wrap;gap:var(--s2) var(--s3);margin:var(--s5) 0 0;align-items:center}
+/* ── Action ─────────────────────────────────────────────────────────── */
+.actions{margin:var(--s5) 0 0}
 .btn{
   display:inline-flex;align-items:center;gap:.55rem;
   padding:.85rem 1.4rem;border-radius:100px;
-  font-weight:600;font-size:.95rem;letter-spacing:.01em;
-  text-decoration:none;border:1px solid transparent;
-  transition:transform .28s var(--ease),box-shadow .28s var(--ease),border-color .28s var(--ease);
+  font-family:inherit;font-weight:600;font-size:.95rem;letter-spacing:.01em;
+  text-decoration:none;border:1px solid transparent;cursor:pointer;
+  transition:transform .28s var(--ease),box-shadow .28s var(--ease);
 }
 .btn:active{transform:translateY(1px) scale(.985)}
 .btn:focus-visible{outline:2px solid var(--amber-hot);outline-offset:3px}
@@ -215,17 +170,24 @@ h1 .glow{
   box-shadow:var(--shadow-float);
 }
 .btn-primary:hover{transform:translateY(-2px)}
-.btn-ghost{
-  color:var(--paper);
-  border-color:var(--line);
-  background:rgba(19,29,66,.5);
-}
-.btn-ghost:hover{transform:translateY(-2px);border-color:rgba(91,156,255,.4);box-shadow:0 10px 30px -14px rgba(91,156,255,.5)}
 .btn svg{flex:none;transition:transform .28s var(--ease)}
 .btn:hover svg{transform:translateX(3px)}
 
-.actions-note{margin:var(--s3) 0 0;font-size:.85rem;color:var(--muted)}
-button.btn{font-family:inherit;cursor:pointer}
+/* ── Footer ─────────────────────────────────────────────────────────── */
+footer{
+  position:relative;z-index:1;
+  border-top:1px solid var(--line);
+}
+.foot-inner{
+  width:min(100% - 2.5rem,44rem);margin-inline:auto;
+  padding-block:var(--s4);
+  text-align:center;
+  font-size:.82rem;color:var(--muted);
+}
+.foot-inner p{margin:0}
+.foot-inner a{color:var(--beacon);text-decoration:none;border-bottom:1px solid transparent;transition:border-color .25s var(--ease)}
+.foot-inner a:hover{border-bottom-color:var(--beacon)}
+.foot-inner a:focus-visible{outline:2px solid var(--amber-hot);outline-offset:2px}
 
 /* ── Form modal ─────────────────────────────────────────────────────── */
 .modal{
@@ -233,7 +195,7 @@ button.btn{font-family:inherit;cursor:pointer}
   display:none;align-items:center;justify-content:center;
   padding:var(--s3);
 }
-.modal[open],.modal.is-open{display:flex}
+.modal.is-open{display:flex}
 .modal-scrim{
   position:absolute;inset:0;
   background:rgba(3,6,14,.78);
@@ -250,6 +212,7 @@ button.btn{font-family:inherit;cursor:pointer}
   color:#101828;
   border-radius:18px;
   overflow:hidden;
+  text-align:left;
   box-shadow:var(--shadow-float);
   animation:rise .38s var(--ease);
 }
@@ -274,39 +237,10 @@ button.btn{font-family:inherit;cursor:pointer}
 .modal-close:hover{background:rgba(16,24,40,.07)}
 .modal-close:active{transform:scale(.94)}
 .modal-close:focus-visible{outline:2px solid var(--beacon-deep);outline-offset:2px}
-/* height is set inline by form_embed.js once the form reports its size,
-   so do not fight it with a CSS height here */
+/* height is set inline by form_embed.js once the form reports its size */
 .modal-body{flex:1 1 auto;overflow-y:auto;padding:0 var(--s3) var(--s3)}
 .modal-body iframe{display:block;width:100%;min-height:529px;border:0;border-radius:10px}
-.modal-loading{
-  height:529px;display:grid;place-items:center;
-  font-size:.88rem;color:#54617A;
-}
-
-/* ── Footer ─────────────────────────────────────────────────────────── */
-footer{
-  position:relative;z-index:1;
-  border-top:1px solid var(--line);
-  margin-top:var(--s6);
-}
-.foot-inner{
-  width:min(100% - 2.5rem,68rem);margin-inline:auto;
-  padding-block:var(--s4);
-  display:flex;flex-wrap:wrap;gap:var(--s2) var(--s5);
-  align-items:center;justify-content:space-between;
-  font-size:.82rem;color:var(--muted);
-}
-.foot-inner p{margin:0}
-.foot-inner a{color:var(--beacon);text-decoration:none;border-bottom:1px solid transparent;transition:border-color .25s var(--ease)}
-.foot-inner a:hover{border-bottom-color:var(--beacon)}
-.foot-inner a:focus-visible{outline:2px solid var(--amber-hot);outline-offset:2px}
-.disclaimer{max-width:36rem;line-height:1.6}
-
-@media (max-width:640px){
-  main{padding-block:var(--s6) var(--s5)}
-  .facts{margin-top:var(--s5);grid-template-columns:1fr}
-  .actions .btn{width:100%;justify-content:center}
-}
+.modal-loading{height:529px;display:grid;place-items:center;font-size:.88rem;color:#54617A}
 
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition-duration:.01ms!important}
@@ -317,60 +251,32 @@ footer{
 <div class="stage" aria-hidden="true"></div>
 <div class="chequer" aria-hidden="true"></div>
 
-<div class="shell">
-  <header class="top">
-    <div class="mark">
-      <svg width="22" height="22" viewBox="0 0 32 32" aria-hidden="true">
-        <rect x="4" y="6" width="8" height="8" fill="#5B9CFF"/>
-        <rect x="12" y="14" width="8" height="8" fill="#5B9CFF"/>
-        <rect x="12" y="6" width="8" height="8" fill="#F2A33C"/>
-        <rect x="20" y="14" width="8" height="8" fill="#16307A"/>
-      </svg>
-      Playing for the Blue
-    </div>
-    <p class="top-note">Aotearoa New Zealand</p>
-  </header>
+<main>
+  <svg class="glyph" width="44" height="44" viewBox="0 0 32 32" aria-hidden="true">
+    <rect x="4" y="6" width="8" height="8" fill="#5B9CFF"/>
+    <rect x="12" y="14" width="8" height="8" fill="#5B9CFF"/>
+    <rect x="12" y="6" width="8" height="8" fill="#F2A33C"/>
+    <rect x="20" y="14" width="8" height="8" fill="#16307A"/>
+  </svg>
 
-  <main>
-    <p class="badge"><span class="dot" aria-hidden="true"></span> In development &middot; announcing soon</p>
+  <p class="badge"><span class="dot" aria-hidden="true"></span> Coming soon</p>
 
-    <h1>One night.<br>One stage.<br><span class="glow">For those who serve.</span></h1>
+  <h1>Playing for the Blue</h1>
 
-    <p class="lede">
-      Playing for the Blue is a charitable concert for New Zealand's police,
-      emergency services, and the families who carry the weight alongside them.
-    </p>
-    <p class="sub">
-      Artists donate the performance. A venue donates the room. Every seat goes to
-      the people who spend their working lives running toward the thing everyone
-      else runs from.
-    </p>
+  <p class="tagline">Details will be announced here.</p>
 
-    <dl class="facts">
-      <div class="fact"><dt>Format</dt><dd>Once a year, live</dd></div>
-      <div class="fact"><dt>Who it is for</dt><dd>Staff and wh&#257;nau</dd></div>
-      <div class="fact"><dt>Cost to attend</dt><dd>Free, always</dd></div>
-    </dl>
+  <div class="rule" aria-hidden="true"></div>
 
-    <div class="actions">
-      <button class="btn btn-primary" type="button" id="open-form">
-        Register your interest
-        <svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8h11m0 0-4-4m4 4-4 4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </button>
-    </div>
-    <p class="actions-note">
-      Bands and venues offering their time, serving staff with questions, or
-      anyone who wants to know when it happens.
-    </p>
-  </main>
-</div>
+  <div class="actions">
+    <button class="btn btn-primary" type="button" id="open-form">
+      Register your interest
+      <svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8h11m0 0-4-4m4 4-4 4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+  </div>
+</main>
 
 <footer>
   <div class="foot-inner">
-    <p class="disclaimer">
-      Playing for the Blue is an independent charitable initiative. It is not
-      operated by, or affiliated with, New Zealand Police.
-    </p>
     <p>&copy; 2026 Playing for the Blue &middot; <a href="https://biguglyresults.com" rel="nofollow">Site by Big Ugly Results</a></p>
   </div>
 </footer>
