@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Icon source 512</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:512px;height:512px;overflow:hidden}
+body{background:#060A16;display:grid;place-items:center}
+/* chequer glyph: 2x2 with one amber cell, on the stage navy */
+.tile{
+  width:512px;height:512px;position:relative;
+  background:
+    radial-gradient(70% 70% at 50% 108%, rgba(242,163,60,.30) 0%, rgba(242,163,60,0) 66%),
+    linear-gradient(160deg,#131D42 0%,#060A16 72%);
+  display:grid;place-items:center;
+}
+.mark{display:grid;grid-template-columns:repeat(2,178px);grid-template-rows:repeat(2,178px)}
+.mark span{display:block}
+</style>
+</head>
+<body>
+<div class="tile">
+  <div class="mark">
+    <span style="background:#5B9CFF"></span>
+    <span style="background:#F2A33C"></span>
+    <span style="background:#16307A"></span>
+    <span style="background:#5B9CFF"></span>
+  </div>
+</div>
+</body>
+</html>
