@@ -343,12 +343,13 @@ footer{
 
     <div class="actions">
       <button class="btn btn-primary" type="button" id="open-form">
-        Keep me posted
+        Register your interest
         <svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8h11m0 0-4-4m4 4-4 4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </button>
     </div>
     <p class="actions-note">
-      Artists, venues and partners: same form, just tell us which.
+      Bands and venues offering their time, serving staff with questions, or
+      anyone who wants to know when it happens.
     </p>
   </main>
 </div>
@@ -368,8 +369,8 @@ footer{
   <div class="modal-panel">
     <div class="modal-head">
       <div>
-        <h2 id="form-modal-title">Keep me posted</h2>
-        <p>We will only email you about this event. Nothing else, no lists, no sharing.</p>
+        <h2 id="form-modal-title">Register your interest</h2>
+        <p>Tell us who you are and we will come back to you. Your details are not shared with anyone.</p>
       </div>
       <button class="modal-close" type="button" data-close aria-label="Close">&#10005;</button>
     </div>
@@ -398,7 +399,7 @@ footer{
     injected = true;
     var f = document.createElement('iframe');
     f.src = FORM_SRC;
-    f.title = 'Keep me posted';
+    f.title = 'Register your interest';
     f.id = 'inline-' + FORM_ID;
     f.setAttribute('scrolling', 'no');
     // form_embed.js reads these to post the real height back and resize us
@@ -406,7 +407,7 @@ footer{
     f.setAttribute('data-trigger-type', 'alwaysShow');
     f.setAttribute('data-activation-type', 'alwaysActivated');
     f.setAttribute('data-deactivation-type', 'neverDeactivate');
-    f.setAttribute('data-form-name', 'Playing for the Blue - keep me posted');
+    f.setAttribute('data-form-name', 'Playing for the Blue - register your interest');
     f.setAttribute('data-height', '529');
     f.setAttribute('data-layout-iframe-id', 'inline-' + FORM_ID);
     f.setAttribute('data-form-id', FORM_ID);
