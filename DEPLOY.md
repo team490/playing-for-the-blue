@@ -9,7 +9,9 @@ Domain and repo details are already baked in. One placeholder is left.
 |---|---|
 | Domain | `playingfortheblue.nz` (CNAME file committed) |
 | GitHub account | `team490` |
-| Local repo | committed on `main`, no remote yet |
+| Repo | https://github.com/team490/playing-for-the-blue (public, `main`) |
+| Pages | enabled, built OK, custom domain registered |
+| Remaining | Cloudflare DNS records - nothing else |
 | GHL form | LD4dK2lxO7FFQZniYveC on links.genesiscrm.co.nz - wired in and tested |
 
 ## The form
@@ -39,43 +41,39 @@ holding page, but before this gets promoted anywhere, move it to a dedicated
 GHL sub-account for the charity. It keeps the list separate from agency
 leads and means it can be handed over cleanly when the entity exists.
 
-## Steps to go live
+## Steps already done (2026-08-28)
 
-1. **Create the repo** at github.com/new under `team490`. Public. Name it
-   `playing-for-the-blue`. Do NOT tick "Add a README" - the repo needs this
-   folder's files at its root.
+1. `gh` CLI installed and authenticated as `team490`.
+2. Repo created and pushed:
+   `gh repo create team490/playing-for-the-blue --public --source=. --remote=origin --push`
+3. Pages enabled from `main` / root:
+   `gh api --method POST repos/team490/playing-for-the-blue/pages -f "source[branch]=main" -f "source[path]=/"`
+4. Build succeeded. `team490.github.io/playing-for-the-blue` now 301s to
+   `playingfortheblue.nz`, confirming the custom domain is registered.
 
-2. **Push:**
+## The only remaining step: DNS
 
-   ```bash
-   cd "clients/playing-for-the-blue/site/v1"
-   git remote add origin https://github.com/team490/playing-for-the-blue.git
-   git push -u origin main
-   ```
+The domain sits on Cloudflare nameservers (`ajay` / `yolanda.ns.cloudflare.com`).
+Add five records in the Cloudflare dashboard:
 
-3. **Turn on Pages:** Settings > Pages > Source "Deploy from a branch" >
-   Branch `main` > Folder `/ (root)` > Save.
+```
+A        @      185.199.108.153
+A        @      185.199.109.153
+A        @      185.199.110.153
+A        @      185.199.111.153
+CNAME    www    team490.github.io
+```
 
-4. **Custom domain:** same screen, enter `playingfortheblue.nz`, Save.
-   The committed CNAME file usually fills this in automatically. Tick
-   "Enforce HTTPS" once it stops being greyed out (10-30 min while the
-   certificate is issued).
+**Set every one of them to "DNS only" (grey cloud), not proxied.** A proxied
+record stops GitHub validating the domain, so the certificate never issues
+and "Enforce HTTPS" stays greyed out permanently. Once the cert is issued you
+can turn the proxy back on if you want, with SSL mode set to Full.
 
-5. **DNS at the registrar.** Four A records for the apex, one CNAME for www:
+Delete any parking or placeholder record Cloudflare added when the domain was
+registered, or it will fight the A records.
 
-   ```
-   A        @      185.199.108.153
-   A        @      185.199.109.153
-   A        @      185.199.110.153
-   A        @      185.199.111.153
-   CNAME    www    team490.github.io
-   ```
-
-   Do not add an A record pointing at anything else, and remove any parking
-   or redirect records the registrar added when the domain was bought.
-
-6. **Wait.** DNS takes 10 minutes to a few hours. GitHub shows a green tick
-   on the Pages settings screen when the certificate is issued.
+Then tick **Enforce HTTPS** on the repo's Settings > Pages screen once it
+stops being greyed out (usually 10-30 minutes after DNS resolves).
 
 ## Checks once it is live
 
